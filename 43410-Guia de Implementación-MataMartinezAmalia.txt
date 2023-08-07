@@ -1,0 +1,18 @@
+Guía de pasos para la implementación del Esquema VeterinariaEntrega
+
+1-43410Creación-de-tablas-MataMartinezAmalia.sql
+2-43410Inserción de datos-MataMartinezAmalia
+	1-Personal.csv
+	2-Servicio.csv
+	3-Clientes.csv
+	4-Mascotas.csv
+	5-Kardex.csv
+	6-Factura.csv
+3-43410Creacion-de-vistas-MataMartinezAmalia.sql
+4-43410Creacion-de-FuncionesMataMartinezAmalia.sql
+5-43410Creacion-de-stored-MataMartinezAmalia.sql
+6-43410Creacion-de-TRIGGERS-MataMartinezAmalia.sql
+7-43410DCL-Creacion-de-usuarios-MataMartinezAmalia.sql
+8-43410TCL-MataMartinezAmalia.sql
+9-43410BACKUP-MataMartinezAmalia.sql
+

@@ -1,0 +1,51 @@
+use veterinariaentrega;
+
+select @@autocommit;
+set @@autocommit = 0;
+
+select * from factura;
+
+START TRANSACTION;
+DELETE FROM factura WHERE no_folio= 15;
+-- ROLLBACK
+COMMIT;
+
+START TRANSACTION;
+INSERT INTO CLIENTES (ID_CLIENTE, NOMBRE, APELLIDOS, E_MAIL, DIRECCIÓN, CIUDAD, ESTADO, CP, TELÉFONO, FECHA_DE_NACIMIENTO) 
+VALUES (18, 'Juan', 'Torres Gutierrez', 'juan10@hotmail.com', 'Calle 10 781', 'Ramos Arizpe', 'Coahuila', 63002, 8427894152, 19870101);
+INSERT INTO CLIENTES (ID_CLIENTE, NOMBRE, APELLIDOS, E_MAIL, DIRECCIÓN, CIUDAD, ESTADO, CP, TELÉFONO, FECHA_DE_NACIMIENTO) 
+VALUES (19, 'Juana Maria', 'Torres Aguila', 'juana10@hotmail.com', 'Calle 78 781', 'Ramos Arizpe', 'Coahuila', 63022, 8427894782, 19870103);
+INSERT INTO CLIENTES (ID_CLIENTE, NOMBRE, APELLIDOS, E_MAIL, DIRECCIÓN, CIUDAD, ESTADO, CP, TELÉFONO, FECHA_DE_NACIMIENTO) 
+VALUES (20, 'Jonathan', 'Torres Gutierrez', 'jona10@hotmail.com', 'Calle 10 781', 'Ramos Arizpe', 'Coahuila', 63002, 8427004152, 19900201);
+INSERT INTO CLIENTES (ID_CLIENTE, NOMBRE, APELLIDOS, E_MAIL, DIRECCIÓN, CIUDAD, ESTADO, CP, TELÉFONO, FECHA_DE_NACIMIENTO) 
+VALUES (21, 'Griselda', 'Cordero Ruiz', 'gris10@hotmail.com', 'Avenida Norte 781', 'Ramos Arizpe', 'Coahuila', 63702, 8427800052, 19910112);
+
+SAVEPOINT sp1;
+
+INSERT INTO CLIENTES (ID_CLIENTE, NOMBRE, APELLIDOS, E_MAIL, DIRECCIÓN, CIUDAD, ESTADO, CP, TELÉFONO, FECHA_DE_NACIMIENTO) 
+VALUES (22, 'Carolina', 'Gutierrez Torres', 'carolini@hotmail.com', 'Calle Rio Grande 781', 'Saltillo', 'Coahuila', 58741, 8447894152, 19870101);
+INSERT INTO CLIENTES (ID_CLIENTE, NOMBRE, APELLIDOS, E_MAIL, DIRECCIÓN, CIUDAD, ESTADO, CP, TELÉFONO, FECHA_DE_NACIMIENTO) 
+VALUES (23, 'Rodolfo', 'Cordero Morales', 'roddolf@hotmail.com', 'Calle San Juan 781', 'Saltillo', 'Coahuila', 58941, 8447014152, 19871101);
+INSERT INTO CLIENTES (ID_CLIENTE, NOMBRE, APELLIDOS, E_MAIL, DIRECCIÓN, CIUDAD, ESTADO, CP, TELÉFONO, FECHA_DE_NACIMIENTO) 
+VALUES (24, 'Cristina', 'Jaramillo De Medrano', 'cristii@hotmail.com', 'Calle San Jose 7041', 'Saltillo', 'Coahuila', 58897, 8441004142, 19891011);
+INSERT INTO CLIENTES (ID_CLIENTE, NOMBRE, APELLIDOS, E_MAIL, DIRECCIÓN, CIUDAD, ESTADO, CP, TELÉFONO, FECHA_DE_NACIMIENTO) 
+VALUES (25, 'Ana', 'Hernandez Trujillo', 'anita@hotmail.com', 'Calle 2003 2034', 'Saltillo', 'Coahuila', 58670, 8447515253, 19920921);
+
+SAVEPOINT sp2;
+-- RELEASE SAVEPOINT sp1
+COMMIT;
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+ 
+
+

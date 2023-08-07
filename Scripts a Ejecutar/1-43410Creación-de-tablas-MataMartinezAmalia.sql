@@ -1,0 +1,95 @@
+drop schema if exists veterinariaentrega;
+create schema if not exists veterinariaentrega;
+use veterinariaentrega;
+
+CREATE TABLE PERSONAL(
+ID_PERSONAL int,
+NOMBRE_EMPLEADO varchar(50) NOT NULL,
+APELLIDOS_EMPLEADO varchar(50) NOT NULL,
+DIRECCION varchar(250) NOT NULL,
+CIUDAD varchar(15) NOT NULL,
+ESTADO varchar(15) NOT NULL,
+CP int,
+E_MAIL varchar(50) NOT NULL,
+TELEFONO varchar(15) NOT NULL,
+CARGO varchar(50) NOT NULL,
+primary key (ID_PERSONAL)
+);
+
+CREATE TABLE SERVICIO(
+ID_SERVICIO int,
+SERVICIO varchar(100) NOT NULL,
+DESCRIPCIÓN varchar(450) NOT NULL,
+PRECIO decimal (6,2),
+primary key (ID_SERVICIO)
+);
+
+CREATE TABLE CLIENTES(
+ID_CLIENTE int,
+NOMBRE varchar(50) NOT NULL,
+APELLIDOS varchar(50) NOT NULL,
+E_MAIL varchar(50) NOT NULL,
+DIRECCIÓN varchar(50) NOT NULL,
+CIUDAD varchar(15) NOT NULL,
+ESTADO varchar(15) NOT NULL,
+CP int,
+TELÉFONO varchar(15) NOT NULL,
+FECHA_DE_NACIMIENTO date,
+primary key (ID_CLIENTE)
+);
+
+CREATE TABLE MASCOTAS(
+ID_MASCOTA int,
+NOMBRE_MASCOTA varchar(50) NOT NULL,
+RAZA varchar(50) NOT NULL,
+SEXO_MASCOTA ENUM('F', 'M') NOT NULL,
+COLOR varchar(25) NOT NULL,
+EDAD int,
+TAMANO int,
+PESO decimal (6,2),
+PEDIGREE varchar(25),
+CHIP int,
+DESCRIPCIÓN varchar(150) NOT NULL,
+FECHA_DE_NACIMIENTO date NOT NULL,
+ID_CLIENTE int,
+PROPIETARIO varchar(50) NOT NULL,
+primary key (ID_MASCOTA),
+foreign key (ID_CLIENTE) references CLIENTES(ID_CLIENTE));
+
+CREATE TABLE KARDEX(
+NO_KARDEX int,
+ID_MASCOTA int,
+NOMBRE_MASCOTA varchar(50) NOT NULL,
+FECHA date NOT NULL,
+ID_SERVICIO int,
+SERVICIO varchar(100) NOT NULL,
+DESCRIPCIÓN varchar(350) NOT NULL,
+PRÓXIMA_FECHA date NOT NULL,
+ID_PERSONAL int,
+NOMBRE_EMPLEADO varchar(150) NOT NULL,
+HISTORIA_CLÍNICA varchar(250) NOT NULL,
+primary key (NO_KARDEX),
+foreign key (ID_MASCOTA) references MASCOTAS(ID_MASCOTA),
+foreign key (ID_SERVICIO) references SERVICIO(ID_SERVICIO),
+foreign key (ID_PERSONAL) references PERSONAL(ID_PERSONAL));
+
+CREATE TABLE FACTURA(
+NO_FOLIO int,
+FECHA date NOT NULL,
+ID_CLIENTE int,
+ID_MASCOTA int,
+ID_SERVICIO int,
+DETALLE varchar(250),
+PRECIO_UNITARIO_DLLS decimal(8,2) NOT NULL,
+SUBTOTAL_DLLS decimal(8,2) NOT NULL,
+IVA decimal(3,2) NOT NULL,
+TOTAL_DLLS decimal(8,2) NOT NULL,
+primary key (NO_FOLIO),
+foreign key (ID_CLIENTE) references CLIENTES(ID_CLIENTE),
+foreign key (ID_MASCOTA) references MASCOTAS(ID_MASCOTA),
+foreign key (ID_SERVICIO) references SERVICIO(ID_SERVICIO)
+);
+
+
+
+
